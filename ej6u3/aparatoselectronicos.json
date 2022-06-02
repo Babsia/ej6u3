@@ -1,0 +1,32 @@
+{
+    "__class__": "Lista",
+    "aparatos": [
+        {
+            "__class__": "Heladeras",
+            "__atributos__": {
+                "marca": "Samsung",
+                "modelo": "RT32K5070",
+                "color": "Gris",
+                "pais": "China",
+                "precio": 126000.0,
+                "litros": 321,
+                "freezer": true,
+                "ciclica": true
+            }
+        },
+        {
+            "__class__": "lavarropa",
+            "__atributos__": {
+                "marca": "Philco",
+                "modelo": "PHLS100P inverter",
+                "color": "Plateado",
+                "pais": "Argentina",
+                "precio": 125500.0,
+                "capacidad": 10,
+                "velocidad": 1200,
+                "Cprog": 10,
+                "tipodecarga": "Frontal"
+            }
+        }
+    ]
+}
