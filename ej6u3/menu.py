@@ -4,6 +4,7 @@ from aparatos import aparatos
 from heladera import Heladeras
 from televisor import televisor
 from lavarropas import lavarropa
+from typing import List
 class menuu:
     __switcher=None
     __M=None
@@ -12,7 +13,11 @@ class menuu:
         self.__switcher = { 
             'a':self.opcion1,
             'b':self.opcion2,
-            'c':self.salir,
+            'c':self.opcion3,
+            'd':self.opcion4,
+            'e':self.opcion5,
+            'f':self.opcion6,
+            'g':self.salir
             }
         unencoder=ObjectEncoder()
         d=unencoder.leerJSONArchivo('aparatoselectronicos.json')
@@ -26,7 +31,9 @@ class menuu:
         func()
 
     def salir(self):
-
+        unobjen=ObjectEncoder()
+        diccionario=self.__M.toJSON()
+        unobjen.guardarJSONArchivo(diccionario, "aparatoselectronicos.json")
         print('Salir')
     def ingresador(self):
         unAparato=None
@@ -86,4 +93,40 @@ class menuu:
         print("opcion b")
         unAparato = self.ingresador()
         self.__M.agregaraparato(unAparato)
-    
+    def opcion3(self):
+        print("opcion 3")
+        pos=int(input('ingrese una posicion para mostrar: '))
+        print(self.__M.mostrarAparato(pos))
+    def opcion4(self):
+        print ('opcion 4') 
+        conth=contl=conttv=0
+        for elemento in self.__M:
+            if isinstance(elemento,Heladeras)and elemento.getmarca()=='phillips':
+                conth+=1
+            if isinstance(elemento,televisor)and elemento.getmarca()=='phillips':
+                conttv+=1
+            if isinstance(elemento,lavarropa)and elemento.getmarca()=='phillips':
+                contl+=1
+        print('la cantidad de aparatos phillips son: {}'.format(contl+conth+conttv))
+        print('heladeras: {}'.format(conth))
+        print('televisores: {}'.format(conttv))
+        print('lavarropas: {}'.format(contl))
+    def opcion5(self):
+        print('Mostrar la marca de todos los lavarropas que tienen carga superior .')
+        marcas:List[str]=[]
+        for elemento in self.__M:
+            if isinstance(elemento,lavarropa)and elemento.getmarca().lower() not in [unaMarca.lower() for unaMarca in marcas]and elemento.gettipo() == "Superior":
+                marcas.append(elemento.getmarca())
+        marcas.sort()
+        for unaMarca in marcas:
+            print(unaMarca)
+    def opcion6(self):
+        for elemento in self.__M:
+            print(elemento)
+
+
+
+
+
+
+

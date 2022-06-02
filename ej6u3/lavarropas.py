@@ -11,7 +11,9 @@ class lavarropa(aparatos):
         self.__velocidad=velocidad
         self.__Cprog=Cprog
         self.__tipodecarga=tipodecarga
-    #def __str__(self):
+    def __str__(self):
+        cadena=super().__str__()+("capacidad:{} velocidad:{} \n cantidad de programas:{} tipo de carga:{}".format(self.__capacidad,self.__velocidad,self.__Cprog,self.__tipodecarga))
+        return cadena
     def getcapacidad(self):
         return self.__capacidad
     def getvelocidad(self):

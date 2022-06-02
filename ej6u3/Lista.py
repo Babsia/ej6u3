@@ -58,3 +58,27 @@ class Lista:
                     raise IndexError("Indice fuera de rango")
         self.__tope += 1
         return insertado
+    def mostrarAparato(self,posicionBuscada):
+        i = 0
+        self.__actual = self.__comienzo
+        if (posicionBuscada == 1):
+            aparatoBuscado = self.__actual.getDato()
+    
+        while i < posicionBuscada-1 and self.__actual.getSiguiente() != None:
+            i += 1
+            self.__actual =self.__actual.getSiguiente()
+        
+        if i< posicionBuscada-1 or i > posicionBuscada-1:
+            raise(IndexError("Fuera de indice"))
+        
+        aparatoBuscado = self.__actual.getDato()
+        return aparatoBuscado
+        
+    def toJSON(self):
+        d = dict(
+            __class__=self.__class__.__name__,
+            aparatos=[unAparato.toJSON() for unAparato in self]
+        )
+        return d
+
+
